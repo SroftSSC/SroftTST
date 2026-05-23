@@ -7,20 +7,72 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app">
-    <h1>AI Araştırma Asistanı</h1>
-    <p>Bir soru sor, yerel motor internette arama yapıp özetlesin. API anahtarı gerekmiyor.</p>
-    <form id="question-form">
-      <label for="question">Soru</label>
-      <textarea id="question" rows="6" placeholder="Buraya sorunuzu yazın..." required></textarea>
-      <button type="submit">Araştır</button>
-    </form>
-    <div id="status" class="status"></div>
-    <section id="response" class="card hidden"></section>
-    <section class="note">
-      <strong>Not:</strong> Bu sistem, yerel fonksiyon içinde DuckDuckGo araması ve kendi özetleme motoru ile çalışır.
-    </section>
-  </main>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <a class="brand" href="#">
+          <span class="brand-mark">S</span>
+          <span id="brand-name">SroftTST</span>
+        </a>
+        <nav class="site-nav" aria-label="Ana menü">
+          <a id="nav-home" class="nav-link active" href="#">Ana Sayfa</a>
+          <span class="nav-link disabled">SroftAI</span>
+        </nav>
+      </div>
+
+      <div class="topbar-right">
+        <div class="language-picker" id="language-picker">
+          <button id="lang-button" class="lang-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-title">Language</span>
+            <span id="lang-current">Türkçe</span>
+          </button>
+          <ul id="lang-menu" class="lang-menu hidden" role="listbox"></ul>
+        </div>
+
+        <div class="profile-area">
+          <button id="profile-button" class="profile-button" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="profile-avatar">?</span>
+            <span class="profile-label">Hesap</span>
+          </button>
+          <div id="profile-menu" class="profile-menu hidden">
+            <div class="profile-guest">
+              <button class="ghost-btn">Kayıt Ol</button>
+              <button class="ghost-btn">Giriş Yap</button>
+            </div>
+            <div class="profile-links">
+              <button class="menu-item">Profil</button>
+              <button class="menu-item">Ayarlar</button>
+              <button class="menu-item">Yardım</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app">
+      <section class="hero-card card">
+        <div>
+          <h1 id="main-title">AI Araştırma Asistanı</h1>
+          <p id="main-description">Bir soru sor, yerel motor internette arama yapıp özetlesin. API anahtarı gerekmiyor.</p>
+        </div>
+      </section>
+
+      <section class="form-card card">
+        <form id="question-form">
+          <label for="question" id="question-label">Soru</label>
+          <textarea id="question" rows="6" placeholder="Buraya sorunuzu yazın..." required></textarea>
+          <button type="submit" id="submit-button">Araştır</button>
+        </form>
+        <div id="status" class="status"></div>
+      </section>
+
+      <section id="response" class="card hidden"></section>
+
+      <section class="note" id="note-text">
+        <strong>Not:</strong> Bu sistem, yerel fonksiyon içinde DuckDuckGo araması ve kendi özetleme motoru ile çalışır.
+      </section>
+    </main>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
