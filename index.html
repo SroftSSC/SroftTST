@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Araştırma Asistanı</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1>AI Araştırma Asistanı</h1>
+    <p>Bir soru sor, yerel motor internette arama yapıp özetlesin. API anahtarı gerekmiyor.</p>
+    <form id="question-form">
+      <label for="question">Soru</label>
+      <textarea id="question" rows="6" placeholder="Buraya sorunuzu yazın..." required></textarea>
+      <button type="submit">Araştır</button>
+    </form>
+    <div id="status" class="status"></div>
+    <section id="response" class="card hidden"></section>
+    <section class="note">
+      <strong>Not:</strong> Bu sistem, yerel fonksiyon içinde DuckDuckGo araması ve kendi özetleme motoru ile çalışır.
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

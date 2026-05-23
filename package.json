@@ -1,0 +1,12 @@
+{
+  "name": "ai-research-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx netlify dev"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "html-to-text": "^9.0.0"
+  }
+}
