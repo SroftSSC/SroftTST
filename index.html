@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Araştırma Asistanı</title>
+  <title>SroftTST - Turkish Software Team</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="site-backdrop"></div>
   <div class="page-shell">
-    <header class="topbar">
+    <header class="topbar glass-panel" id="top">
       <div class="topbar-left">
-        <a class="brand" href="#">
+        <a class="brand" href="#top">
           <span class="brand-mark">S</span>
           <span id="brand-name">SroftTST</span>
         </a>
         <nav class="site-nav" aria-label="Ana menü">
-          <a id="nav-home" class="nav-link active" href="#">Ana Sayfa</a>
-          <span class="nav-link disabled">SroftAI</span>
+          <a id="nav-home" class="nav-link active" href="#top">Ana Sayfa</a>
+          <a class="nav-link" href="#research">AI</a>
+          <a class="nav-link" href="#chat">Sohbet</a>
+          <a class="nav-link" href="#games">Oyunlar</a>
         </nav>
       </div>
 
       <div class="topbar-right">
+        <div class="topbar-status-pill">● Canlı</div>
+
         <div class="language-picker" id="language-picker">
           <button id="lang-button" class="lang-button" type="button" aria-haspopup="listbox" aria-expanded="false">
             <span class="lang-title">Language</span>
@@ -35,44 +40,252 @@
             <span class="profile-label">Hesap</span>
           </button>
           <div id="profile-menu" class="profile-menu hidden">
-            <div class="profile-guest">
-              <button class="ghost-btn">Kayıt Ol</button>
-              <button class="ghost-btn">Giriş Yap</button>
+            <div id="guest-actions" class="profile-guest">
+              <button id="profile-signup" class="ghost-btn">Kayıt Ol</button>
+              <button id="profile-login" class="ghost-btn">Giriş Yap</button>
             </div>
-            <div class="profile-links">
-              <button class="menu-item">Profil</button>
-              <button class="menu-item">Ayarlar</button>
-              <button class="menu-item">Yardım</button>
+            <div id="user-actions" class="profile-user hidden">
+              <p class="user-welcome">Merhaba, <strong id="user-name">Kullanıcı</strong></p>
+              <button class="menu-item" id="profile-menu-item">Profil</button>
+              <button class="menu-item" id="settings-menu-item">Ayarlar</button>
+              <button class="menu-item" id="logout-button">Çıkış Yap</button>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <main class="app">
-      <section class="hero-card card">
-        <div>
-          <h1 id="main-title">AI Araştırma Asistanı</h1>
-          <p id="main-description">Bir soru sor, yerel motor internette arama yapıp özetlesin. API anahtarı gerekmiyor.</p>
+    <main class="app-layout">
+      <section class="hero-panel glass-panel" aria-label="SroftTST öne çıkan içerik">
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-badge">SroftTST Turkish Software Team</p>
+          <h1 id="hero-title">Yapay zekâyla güçlendirilmiş yazılım, sohbet ve oyun merkezi.</h1>
+          <p id="hero-description">SroftTST, Türkçe yazılım geliştirme ekosistemiyle araştırma, sohbet, oyun ve proje yönetimini tek ekranda sunar. Yerel motorlarla hızlı, güvenli ve sade bir deneyim yaşarsınız.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#research">AI Araştırmaya Başla</a>
+            <a class="secondary-action" href="#chat">Sohbete Gir</a>
+          </div>
+          <div class="feature-pills" aria-label="Platform özellikleri">
+            <span class="feature-pill">⚡ Hızlı</span>
+            <span class="feature-pill">🛡️ Yerel</span>
+            <span class="feature-pill">🎮 Oyun</span>
+            <span class="feature-pill">🤖 AI</span>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Platform istatistikleri">
+          <article class="stat-card">
+            <p class="stat-value">24/7</p>
+            <p class="stat-label">Sanal destek</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value">12+</p>
+            <p class="stat-label">Aktif modül</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value">100%</p>
+            <p class="stat-label">Yerel işlem</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value">TR</p>
+            <p class="stat-label">Türkçe odak</p>
+          </article>
         </div>
       </section>
 
-      <section class="form-card card">
-        <form id="question-form">
-          <label for="question" id="question-label">Soru</label>
-          <textarea id="question" rows="6" placeholder="Buraya sorunuzu yazın..." required></textarea>
-          <button type="submit" id="submit-button">Araştır</button>
-        </form>
-        <div id="status" class="status"></div>
-      </section>
+      <section class="dashboard-grid">
+        <div class="main-column">
+          <section id="research" class="section-card glass-panel">
+            <div class="section-header">
+              <div>
+                <p class="section-kicker">AI</p>
+                <h2 id="research-title">AI Araştırma Merkezi</h2>
+              </div>
+              <span class="section-badge">Yerel motor</span>
+            </div>
+            <p id="research-copy">Sorularınızı yazın, yerel arama ve özetleme motoru sonuçları hızlıca hazırlasın.</p>
 
-      <section id="response" class="card hidden"></section>
+            <form id="question-form" class="research-form">
+              <label for="question" id="question-label">Soru</label>
+              <textarea id="question" rows="6" placeholder="Buraya sorunuzu yazın..." required></textarea>
+              <div class="form-actions">
+                <button type="submit" id="submit-button">Araştır</button>
+                <span class="helper-text">Sonuçlar doğrudan bu panelde görünür.</span>
+              </div>
+            </form>
+            <div id="status" class="status"></div>
+            <section id="response" class="response-card hidden"></section>
+          </section>
 
-      <section class="note" id="note-text">
-        <strong>Not:</strong> Bu sistem, yerel fonksiyon içinde DuckDuckGo araması ve kendi özetleme motoru ile çalışır.
+          <section id="chat" class="section-card glass-panel">
+            <div class="section-header">
+              <div>
+                <p class="section-kicker">Sohbet</p>
+                <h2 id="chat-title">Direkt AI Sohbet</h2>
+              </div>
+              <span class="section-badge">Canlı</span>
+            </div>
+            <p id="chat-copy">SroftTST yardımcılarıyla doğal bir şekilde sohbet edin, öneriler alın ve hızlı kararları toparlayın.</p>
+
+            <div id="chat-messages" class="chat-messages" aria-live="polite">
+              <article class="message assistant">
+                <div class="message-meta">SroftTST · İçerik asistanı</div>
+                <p>Merhaba! Ben SroftTST'in sohbet asistanıyım. Buradan projeler, yazılım, oyun ve araştırma konularında destek alabilirsin.</p>
+              </article>
+            </div>
+
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" placeholder="Sohbet mesajını yaz..." aria-label="Sohbet mesajı">
+              <button type="submit" class="chat-send">Gönder</button>
+            </form>
+            <div id="chat-status" class="status"></div>
+          </section>
+
+          <section id="games" class="section-card glass-panel">
+            <div class="section-header">
+              <div>
+                <p class="section-kicker">Oyunlar</p>
+                <h2 id="games-title">Eğlence ve mini oyun alanı</h2>
+              </div>
+              <span class="section-badge">Yeni</span>
+            </div>
+            <p id="games-copy">Mini oyun alanında hızlı eğlence, bilişsel testler ve oyun odaklı deneyimler hazırlanıyor.</p>
+
+            <div class="mini-grid">
+              <article class="mini-card">
+                <div class="mini-icon">🎯</div>
+                <h3>Mini Bulmaca</h3>
+                <p>İşbirliği ve hız odaklı kısa oyun deneyimleri.</p>
+                <button type="button" class="mini-link">Yakında</button>
+              </article>
+              <article class="mini-card">
+                <div class="mini-icon">🧠</div>
+                <h3>Zeka Atölyesi</h3>
+                <p>Algoritma, mantık ve problem çözme mini senaryoları.</p>
+                <button type="button" class="mini-link">Önizle</button>
+              </article>
+              <article class="mini-card">
+                <div class="mini-icon">⚡</div>
+                <h3>Hızlı Prototip</h3>
+                <p>Kısa oyun concept ve demo deneyimleri içeriyor.</p>
+                <button type="button" class="mini-link">İncele</button>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside class="sidebar-column">
+          <section class="side-card glass-panel">
+            <div class="section-header">
+              <div>
+                <p class="section-kicker">Bildirim</p>
+                <h2 id="notifications-title">Duyurular</h2>
+              </div>
+            </div>
+            <ul id="notification-list" class="notification-list">
+              <li class="notification-item active">
+                <div class="notification-dot"></div>
+                <div>
+                  <p class="notif-title">AI araştırma paneli yenilendi</p>
+                  <p class="notif-copy">Yerel sonuçlar daha net ve hızlı bir akışla sunuluyor.</p>
+                </div>
+              </li>
+              <li class="notification-item">
+                <div class="notification-dot"></div>
+                <div>
+                  <p class="notif-title">Sohbet asistanı canlı</p>
+                  <p class="notif-copy">Doğrudan sohbet modunda sorularınıza yanıt alabilirsiniz.</p>
+                </div>
+              </li>
+              <li class="notification-item">
+                <div class="notification-dot"></div>
+                <div>
+                  <p class="notif-title">Oyun alanı geliştiriliyor</p>
+                  <p class="notif-copy">Mini oyunlar ve eğlence odaklı modüller yakında genişliyor.</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="side-card glass-panel">
+            <div class="section-header">
+              <div>
+                <p class="section-kicker">Kurumsal</p>
+                <h2 id="about-title">SroftTST Hakkında</h2>
+              </div>
+            </div>
+            <p class="about-copy">SroftTST, Türk yazılım topluluğuna yönelik AI, arayüz, oyun ve üretken yazılım çözümleri geliştiren bir ekiptir. Çalışmalarımızın merkezinde verimlilik, sade tasarım ve yerel iş akışları yer alır.</p>
+            <ul class="about-list">
+              <li>AI araştırma ve özetleme</li>
+              <li>Çok dillilik ve kullanıcı deneyimi</li>
+              <li>Mini oyun ve içerik üretimi</li>
+            </ul>
+          </section>
+
+          <section class="side-card glass-panel">
+            <div class="section-header">
+              <div>
+                <p class="section-kicker">Hızlı erişim</p>
+                <h2 id="quick-links-title">Bağlantılar</h2>
+              </div>
+            </div>
+            <div class="quick-links">
+              <a href="#research">AI Araştırma</a>
+              <a href="#chat">Sohbet Asistanı</a>
+              <a href="#games">Oyun Alanı</a>
+            </div>
+          </section>
+        </aside>
       </section>
     </main>
   </div>
+
+  <div id="auth-overlay" class="auth-overlay hidden"></div>
+  <div id="auth-modal" class="auth-modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div>
+          <p class="auth-eyebrow" id="auth-eyebrow">Hesap</p>
+          <h2 id="auth-title">Giriş Yap</h2>
+        </div>
+        <button id="auth-close" class="auth-close" type="button" aria-label="Kapat">×</button>
+      </div>
+
+      <div class="auth-tabs">
+        <button id="tab-login" class="tab active" type="button">Giriş Yap</button>
+        <button id="tab-register" class="tab" type="button">Kayıt Ol</button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <label for="login-email" id="login-email-label">E-posta</label>
+        <input id="login-email" type="email" placeholder="ornek@mail.com" required>
+
+        <label for="login-password" id="login-password-label">Şifre</label>
+        <input id="login-password" type="password" placeholder="Şifreniz" required>
+
+        <button type="submit" class="auth-submit" id="login-submit">Giriş Yap</button>
+        <p class="auth-footer">Henüz üye değil misiniz? <button id="switch-register" class="link-button" type="button">Kayıt Ol</button></p>
+      </form>
+
+      <form id="register-form" class="auth-form hidden">
+        <label for="register-name" id="register-name-label">Ad</label>
+        <input id="register-name" type="text" placeholder="Adınız" required>
+
+        <label for="register-email" id="register-email-label">E-posta</label>
+        <input id="register-email" type="email" placeholder="ornek@mail.com" required>
+
+        <label for="register-password" id="register-password-label">Şifre</label>
+        <input id="register-password" type="password" placeholder="Şifreniz" required>
+
+        <label for="register-confirm" id="register-confirm-label">Şifre Tekrar</label>
+        <input id="register-confirm" type="password" placeholder="Şifrenizi tekrar yazın" required>
+
+        <button type="submit" class="auth-submit" id="register-submit">Kayıt Ol</button>
+        <p class="auth-footer">Zaten hesabınız var mı? <button id="switch-login" class="link-button" type="button">Giriş Yap</button></p>
+      </form>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
